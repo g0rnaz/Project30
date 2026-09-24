@@ -18,4 +18,6 @@ int main()
 	obj.Print();
 	obj.append(obj);
 	obj.Print();
+	obj.deleteat(1);
+	obj.Print();
 }

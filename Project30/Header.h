@@ -147,21 +147,25 @@ public:
         return *this;
     }
     Myvector& deleteat(int ii) {
-        T* temp = new T[size];
-        for (int i = 0; i < ii; i++)
-        {
-            temp[i] = ptr[i];
-        }
-        for (int i = ii + 1; i < size + 1; i++)
-        {
-            temp[i] = ptr[i - 1];
-        }
         size--;
-        delete[]ptr;
+
+        T* temp = new T[size + 1];
+
+        for (int i = 0; i < ii; i++)
+            temp[i] = ptr[i];
+
+        for (int i = ii; i < size; i++)
+            temp[i] = ptr[i + 1];
+
+        delete[] ptr;
+
         ptr = new T[size + 1];
-        for (int i = 0; i < size; i++) {
+
+        for (int i = 0; i < size; i++)
             ptr[i] = temp[i];
-        }
+
+        delete[] temp;
+
         return *this;
     }
     Myvector& add(T a, int i)
